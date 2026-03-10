@@ -202,7 +202,11 @@ function updateQty(index, val) {
             if (now - lastApiHit > 5000) {
                 apiHits = 0;
             }
-            lastApiHit = now;
+           if (now - lastApiHit < 2000) {
+                resultDiv.innerText = "Please wait before calculating again.";
+                return;
+            }
+             lastApiHit = now;
             apiHits++;
 
             // VULNERABILITY
@@ -232,4 +236,5 @@ function updateQty(index, val) {
 </body>
 
 </html>
+
 
